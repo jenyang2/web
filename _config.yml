@@ -42,3 +42,5 @@ links:
 exclude: ['package.json', 'src', 'node_modules']
 
 remote_theme : willianjusten/cards-jekyll-template
+
+theme: jekyll-theme-cayman
