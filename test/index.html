@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Test</title>
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.chart/latest/tui-chart.min.css">
+    <style>
+        table {
+          /*width: 10%;
+          margin: auto; */
+        }
+        .mystyle {
+            font-size: 9pt; 
+            font-family: Arial;
+            border-collapse: collapse; 
+            border: 1px solid silver;
+        }
+        .mystyle td, th {
+            padding: 5px;
+        }
+        .mystyle tr:nth-child(even) {
+            background: #E0E0E0;
+        }
+        .mystyle tr:hover {
+            background: silver;
+            cursor: pointer;
+        }/*
+        #wrapper{
+          border: 1px solid #FFBB00;
+          width:900px;
+          padding: 10px;
+          position: absolute;
+          top: 10px;
+          left: 50%;
+          overflow: hidden;
+          margin-left: -533px;
+        }*/
+        #tableSpace{
+          float: left;
+          padding: 10px;
+        }
+        #chartSpace{
+          float: left;
+          width: 200px;
+          padding: 10px;
+          margin-left: 10px;
+        }
+    </style>
+</head>
+<body><br>
+  <section id="wrapper">
+    <div id="tableSpace">
+      <table id="tableList" border="1" class="dataframe mystyle"></table>
+    </div>
+    <div id="chartSpace"></div>
+  </section>
+</body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+<script type="text/javascript" src="https://unpkg.com/tooltip.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+  title = "<tr><th>ID</th>"
+  title += "<th>Name</th>"
+  title += "</tr>"
+  
+  $('#tableList').append(title)
+  
+  /* 
+    ★ Create object ★
+    
+    var data = new Object()
+    data.name = 'Jen'
+    data.gender = 'Male'
+ 
+    var data = {
+        Name : 'Jen'
+        gender : 'Male'
+    }
+    
+    var Data = function(name, gender){
+        this.name = name;
+        this.gender = gender;
+    }
+    
+    var Data = function(name, gender){
+        this.name = name;
+        this.gender = gender;
+        return this;
+    }
+    => var data = new Data('Jen', 'Male')
+    
+  */
+    
+  var data = [];
+  data.append({Name: 'Jen'})
+  data.append({Name: 'Jen2'})
+    
+  table_rows = ""
+  $.each(data, function(index, item){
+    table_rows += "<tr><td>" + (index+1) + "</td>"
+    table_rows += "<td>" + this.Name + "</td>"
+    table_rows += "</tr>"
+  })
+  
+  $('#tableList').append(table_rows);
+  
+</script>
