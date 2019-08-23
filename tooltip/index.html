@@ -65,7 +65,35 @@
   title += "</tr>"
   
   $('#tableList').append(title)
-  data = {'Name': 'Jen'}
+  
+  /* 
+    ★ Create object ★
+    
+    var data = new Object()
+    data.name = 'Jen'
+    data.gender = 'Male'
+ 
+    var data = {
+        Name : 'Jen'
+        gender : 'Male'
+    }
+    
+    var Data = function(name, gender){
+        this.name = name;
+        this.gender = gender;
+    }
+    
+    var Data = function(name, gender){
+        this.name = name;
+        this.gender = gender;
+        return this;
+    }
+    => var data = new Data('Jen', 'Male')
+    
+  */
+    
+  var data = {Name: 'Jen'}
+
   table_rows = ""
   $.each(data, function(index, item){
     table_rows += "<tr><td>" + (index+1) + "</td>"
