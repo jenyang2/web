@@ -49,14 +49,15 @@
     </style>
 </head>
 <body><br>
-    <section id="wrapper">
+    <div id="wrapper">
         <div id="tableSpace">
           <table id="tableList" border="1" class="dataframe mystyle"></table>
         </div>
         <div id="chartSpace"></div>
-    </section>
-    
-    <div id="scatterchart_material"></div>
+    <div><br><br><br><br><br><br>
+    <div>
+        <div id="scatterchart_material"></div>
+    </div>
 </body>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
 <script type="text/javascript" src="https://unpkg.com/tooltip.js"></script>
@@ -95,8 +96,10 @@
   */
     
     var data = [];
-    data.push({Name: 'Jen'})
-    data.push({Name: 'Jen2'})
+    for (var i=0; i<5; i++)
+    {
+        data.push({Name: 'Jen' + i })
+    }
 
     table_rows = ""
     $.each(data, function(index, item){
