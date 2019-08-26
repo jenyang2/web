@@ -49,12 +49,14 @@
     </style>
 </head>
 <body><br>
-  <section id="wrapper">
-    <div id="tableSpace">
-      <table id="tableList" border="1" class="dataframe mystyle"></table>
-    </div>
-    <div id="chartSpace"></div>
-  </section>
+    <section id="wrapper">
+        <div id="tableSpace">
+          <table id="tableList" border="1" class="dataframe mystyle"></table>
+        </div>
+        <div id="chartSpace"></div>
+    </section>
+    
+    <div id="scatterchart_material"></div>
 </body>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
 <script type="text/javascript" src="https://unpkg.com/tooltip.js"></script>
@@ -92,24 +94,61 @@
     
   */
     
-  var data = [];
-  data.push({Name: 'Jen'})
-  data.push({Name: 'Jen2'})
-    
-  table_rows = ""
-  $.each(data, function(index, item){
-    table_rows += "<tr><td>" + (index+1) + "</td>"
-    table_rows += "<td>" + this.Name + "</td>"
-    table_rows += "</tr>"
-  })
-  
-  $('#tableList').append(table_rows);
-  
-</script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-9224955366159497",
-          enable_page_level_ads: true
-     });
+    var data = [];
+    data.push({Name: 'Jen'})
+    data.push({Name: 'Jen2'})
+
+    table_rows = ""
+    $.each(data, function(index, item){
+        table_rows += "<tr><td>" + (index+1) + "</td>"
+        table_rows += "<td>" + this.Name + "</td>"
+        table_rows += "</tr>"
+    })
+
+    $('#tableList').append(table_rows);
+
+    google.charts.load('current', {'packages':['scatter']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart () {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'Hours Studied');
+        data.addColumn('number', 'Final');
+
+        data.addRows([
+            [0, 67], [1, 88], [2, 77],
+            [3, 93], [4, 85], [5, 91],
+            [6, 71], [7, 78], [8, 93],
+            [9, 80], [10, 82],[0, 75],
+            [5, 80], [3, 90], [1, 72],
+            [5, 75], [6, 68], [7, 98],
+            [3, 82], [9, 94], [2, 79],
+            [2, 95], [2, 86], [3, 67],
+            [4, 60], [2, 80], [6, 92],
+            [2, 81], [8, 79], [9, 83],
+            [3, 75], [1, 80], [3, 71],
+            [3, 89], [4, 92], [5, 85],
+            [6, 92], [7, 78], [6, 95],
+            [3, 81], [0, 64], [4, 85],
+            [2, 83], [3, 96], [4, 77],
+            [5, 89], [4, 89], [7, 84],
+            [4, 92], [9, 98]
+            ]);
+
+        var options = {
+        width: 800,
+        height: 500,
+        chart: {
+            title: 'Students\' Final Grades',
+            subtitle: 'based on hours studied'
+        },
+            hAxis: {title: 'Hours Studied'},
+            vAxis: {title: 'Grade'}
+        };
+
+        var chart = new google.charts.Scatter(document.getElementById('scatterchart_material'));
+
+        chart.draw(data, google.charts.Scatter.convertOptions(options));
+    }
 </script>
